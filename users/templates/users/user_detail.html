@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">{{object.email}}</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">{{object.first_name}}</h4>
+                    <h4 class="card-title pricing-card-title">{{object.last_name}}</h4>
+                       <a href="{% url 'users:profile' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

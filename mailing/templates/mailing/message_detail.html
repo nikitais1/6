@@ -1,0 +1,23 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="col">
+    <a class="btn btn-outline-info-link" href="{% url 'mailing:view_message' %}">Назад</a>
+</div>
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-tite">
+                        {{ object.subject|title }}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ object.content|title }}</p>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

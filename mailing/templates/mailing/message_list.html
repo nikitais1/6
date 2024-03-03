@@ -1,0 +1,35 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-6 mb-5">
+        <a class="btn btn-primary" href="{% url 'mailing:create_message' %}">Добавить письмо</a>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for object in object_list %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">{{ object.subject|title }}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ object.content|title }}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group ">
+                        <a href="{% url 'mailing:single_view_message' object.pk %}" type="button"
+                           class="btn btn-sm  btn-outline-primary">view</a>
+                        <a href="{% url 'mailing:update_message' object.pk %}" type="button"
+                           class="btn btn-sm  btn-outline-primary">edit</a>
+                        <a href="{% url 'mailing:delete_message' object.pk %}" type="button"
+                           class="btn btn-sm  btn-outline-danger">delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

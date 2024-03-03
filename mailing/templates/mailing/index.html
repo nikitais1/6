@@ -1,0 +1,61 @@
+{% extends 'users/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="col-12">
+    <div class="row text-center">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <td>Количество рассылок всего</td>
+                            <td>{{count_mailing.count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Количество активных рассылок</td>
+                            <td>{{active_mailing.count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Количество уникальных клиентов для рассылок</td>
+                            <td>{{count_unique_client.count}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+ {% endif %}
+
+<div class="container">
+    <div class="col-6"></div>
+    <div class="row text-center">
+        {% for object in articles %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top"
+                     src="{% mediapath object.preview %}"
+                     alt="Card image cap"
+                     height="250">
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">{{object.title}}</h2>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'blog:blogs' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-primary">Перейти к статье</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

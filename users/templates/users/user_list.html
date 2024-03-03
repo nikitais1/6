@@ -1,0 +1,31 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2 class="display-4">СПИСОК ПОЛЬЗОВАТЕЛЕЙ СЕРВИСА</h2>
+    <p class="lead">Вы можете блокировать пользователей</p>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+        {% for object in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                {% if object.is_active %}
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">{{object.email}}</h2>
+                </div>
+                <a href="{% url 'users:toggle_active' object.pk %}" type="button"
+                   class="btn btn-lg btn-block btn-outline-danger">Деактивировать пользователя</a>
+                {% else %}
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">{{object.email}}</h2>
+                </div>
+                <a href="{% url 'users:toggle_active' object.pk %}" type="button"
+                   class="btn btn-lg btn-block btn-outline-primary">Aктивировать пользователя</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

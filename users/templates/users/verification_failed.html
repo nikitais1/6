@@ -1,0 +1,23 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Ошибка подтверждения по электронной почте</h4>
+                    <p>Ссылка для подтверждения по электронной почте недействительна или срок ее действия истек.
+                        Пожалуйста, зарегистрируйтесь снова.</p>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <a href="{% url 'users:register' %}" type="button col-4"
+                       class="btn btn-success">Зарегистрироваться</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

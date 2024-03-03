@@ -1,0 +1,35 @@
+{% extends 'users/base.html' %}
+{% load my_tags1 %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top"
+                     src="{% mediapath object.preview %}"
+                     alt="Card image cap"
+                     height="500">
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">{{object.title}}</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4 text-center m-3">
+                        <li>{{object.content}}</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Написать комментарий
+                    </button>
+                    {% if perms.blog.change_blog and perms.blog.delete_blog %}
+                    <a href="{% url 'blog:update' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+                    <a href="{% url 'blog:delete' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    Просмотры: {{object.view_count}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
